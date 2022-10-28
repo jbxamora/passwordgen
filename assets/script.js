@@ -14,6 +14,8 @@ const randomFunc = {
   Symbol: getRandomSymbol
 };
 
+// Generate Password Event
+
 generateEl.addEventListener('click', () => {
   const length = +lengthEl.value;
   const hasLower = lowercaseEl.checked;
@@ -21,25 +23,41 @@ generateEl.addEventListener('click', () => {
   const hasNumber = numbersEl.checked;
   const hasSymbol = symbolsEl.checked;
 
-  console.log(hasLower, hasUpper, hasNumber, hasSymbol);
+resultEl.innertext = generatePassword(
+  hasLower,
+  hasUpper, 
+  hasNumber, 
+  hasSymbol, 
+  length
+  );
 })
 
+// Generate Password function
+function generatePassword(lower, upper, number, symbol, length) {
+  // 1. init pw var
+  // 2. filter out unchecked types
+  // 3. loop over length call generator function for each type
+  // 4. add final pw to pw var and return
+}
+
 // Generator Functions 
+// Functions - http://www.net-comber.com/charset.html
 
 function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() *26) + 97);
 }
 
+// Generate a Letter(uppercase)
 function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) * 97)
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65)
 }
-
+// Generate a Number
 function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
 }
-
+// Generates a Symbol
 function getRandomSymbol() {
-  const symbols = '!@#$%^&*()_+-=?/.,{}';
+  const symbols = '!@#$%^&*()_+-=?/.,{}[]';
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
