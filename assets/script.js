@@ -1,4 +1,4 @@
-const resultEl = document.getElementById('result')
+const resultEl = document.getElementById('result');
 const lengthEl = document.getElementById('length');
 const uppercaseEl = document.getElementById('uppercase');
 const lowercaseEl = document.getElementById('lowercase');
@@ -16,10 +16,10 @@ const randomFunc = {
 
 generateEl.addEventListener('click', () => {
   const length = +lengthEl.value;
-  const hasLower = lowercaseEl.ariaChecked;
-  const hasUpper = uppercaseEl.ariaChecked;
-  const hasNumber = numbersEl.ariaChecked;
-  const hasSymbol = symbolsEl.ariaChecked;
+  const hasLower = lowercaseEl.checked;
+  const hasUpper = uppercaseEl.checked;
+  const hasNumber = numbersEl.checked;
+  const hasSymbol = symbolsEl.checked;
 
   console.log(hasLower, hasUpper, hasNumber, hasSymbol);
 })
@@ -55,7 +55,7 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
+} 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
