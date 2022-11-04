@@ -1,35 +1,165 @@
-console.log(getRandomNumber())
-
-// Get references to the #generate element
+// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+var lowercase = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+var uppercase = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+
+var symbols = [
+  "!",
+  "#",
+  "$",
+  "&",
+  "%",
+  "'",
+  "*",
+  "+",
+  "-",
+  "/",
+  ":",
+  ";",
+  "<",
+  "=",
+  ">",
+  "?",
+  "@",
+  "^",
+  "_",
+  "~",
+  "`",
+  "{",
+  "|",
+  "}",
+  ".",
+];
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+// Initial Boolean vars set to false
+function generatePassword() {
+  // make sure w have a password length
+  var passwordLength = window.prompt(
+    "Please choose a password between 8 and 128 characters"
+  );
+  var pwlength = parseInt(passwordLength, 10);
+  console.log(isNaN(pwlength));
+
+  if (pwlength < 8 || pwlength > 128 || isNaN(pwlength)) {
+    alert("Password Length Does Not Meet Criteria");
+    return;
+  }
+
+  var isUpper = confirm("Do you want to use uppercase letters?");
+  var isLower = confirm("Do you want to use lowercase letters?");
+  var isNumeric = confirm("Do you want to use numbers?");
+  var isSymbol = confirm("Do you want to use symbols?");
+
+  var finalPasswordArray = []
+  
+  // If user inputs all = false, alert.
+  if (!(isUpper || isLower || isNumeric || isSymbol)) {
+    alert("Error: You need atleast one of the criteria. Please try again.");
+  }
+if (isUpper){
+  //push the uppar array into a final array
+  finalPasswordArray.push(...uppercase)
+}
+
+if (isLower){
+  //push the lower array into the final array
+    finalPasswordArray.push(...uppercase);
+
+}
+
+if (isNumeric) {
+    finalPasswordArray.push(...uppercase);
+
+
+}
+
+if (isSymbol){
+    finalPasswordArray.push(...symbols);
+
+
+}
+
+console.log(finalPasswordArray)
+
+//for loop to select random characters in the amount of pwlength
+//use math floor aND MATH RANDOM
+
+//return the final password
+
+}
+
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+}
 
-} 
+generateBtn.addEventListener("click", writePassword);
 
+// var passwordText = document.querySelector("#password");
 
+// var password = generatePassword();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// passwordText.value = password;
 
 // Update after grading. Add checkboxes - Change stylesheet - Revert HTML to match events
-
 
 // const resultEl = document.getElementById('result');
 // const lengthEl = document.getElementById('length');
@@ -74,9 +204,9 @@ function writePassword() {
 
 // resultEl.innertext = generatePassword(
 //   hasLower,
-//   hasUpper, 
-//   hasNumber, 
-//   hasSymbol, 
+//   hasUpper,
+//   hasNumber,
+//   hasSymbol,
 //   length
 //   );
 // })
@@ -118,7 +248,7 @@ function writePassword() {
 // return finalPassword;
 // }
 
-// // Generator Functions 
+// // Generator Functions
 // // Functions - http://www.net-comber.com/charset.html
 
 // function getRandomLower() {
@@ -138,6 +268,3 @@ function writePassword() {
 //   const symbols = '!@#$%^&*()_+-=?/.,{}[]';
 //   return symbols[Math.floor(Math.random() * symbols.length)];
 // }
-
-
-
