@@ -87,14 +87,12 @@ var symbols = [
 ];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-// Initial Boolean vars set to false
 function generatePassword() {
   // make sure w have a password length
   var passwordLength = window.prompt(
     "Please choose a password between 8 and 128 characters"
   );
   var pwlength = parseInt(passwordLength, 10);
-  console.log(isNaN(pwlength));
 
   if (pwlength < 8 || pwlength > 128 || isNaN(pwlength)) {
     alert("Password Length Does Not Meet Criteria");
@@ -119,12 +117,12 @@ if (isUpper){
 
 if (isLower){
   //push the lower array into the final array
-    finalPasswordArray.push(...uppercase);
+    finalPasswordArray.push(... lowercase);
 
 }
 
 if (isNumeric) {
-    finalPasswordArray.push(...uppercase);
+    finalPasswordArray.push(...numbers);
 
 
 }
@@ -135,22 +133,36 @@ if (isSymbol){
 
 }
 
+for (var i = 0; i <passwordLength; i++) {
+  finalPasswordArray [Math.floor(Math.random() * finalPasswordArray.length)];
+}
+
+
+
+
+
+
 console.log(finalPasswordArray)
 
 //for loop to select random characters in the amount of pwlength
-//use math floor aND MATH RANDOM
+for (var i = 0; i <= passwordLength; i++) {
+  var randomNumber = Math.floor(Math.random() * passwordLength);
+  password += passwordLength.substring(randomNumber, randomNumber +1);
+}
+
+print.finalPasswordArray;
 
 //return the final password
-
+document.getElementById("password").value = password;
 }
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  
   passwordText.value = password;
+  
 }
-
 generateBtn.addEventListener("click", writePassword);
 
 // var passwordText = document.querySelector("#password");
