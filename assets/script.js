@@ -1,5 +1,5 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+// Assignment Code 
+document.querySelector("#generate").addEventListener("click", writePassword);
 
 var lowercase = [
   "a",
@@ -87,12 +87,18 @@ var symbols = [
 ];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+var passwordLength = "";
+var isUpper;
+var isLower;
+var isNumeric;
+var isSymbol;
+
 function generatePassword() {
   // make sure w have a password length
   var passwordLength = window.prompt(
     "Please choose a password between 8 and 128 characters"
   );
-  var pwlength = parseInt(passwordLength, 10);
+  var pwlength = parseInt(passwordLength);
 
   if (pwlength < 8 || pwlength > 128 || isNaN(pwlength)) {
     alert("Password Length Does Not Meet Criteria");
@@ -105,71 +111,60 @@ function generatePassword() {
   var isSymbol = confirm("Do you want to use symbols?");
 
   var finalPasswordArray = []
+
   
   // If user inputs all = false, alert.
   if (!(isUpper || isLower || isNumeric || isSymbol)) {
     alert("Error: You need atleast one of the criteria. Please try again.");
   }
+  
 if (isUpper){
-  //push the uppar array into a final array
-  finalPasswordArray.push(...uppercase)
+  finalPasswordArray = finalPasswordArray.concat(uppercase)
 }
 
 if (isLower){
-  //push the lower array into the final array
-    finalPasswordArray.push(... lowercase);
+   finalPasswordArray = finalPasswordArray.concat(lowercase);
 
 }
 
 if (isNumeric) {
-    finalPasswordArray.push(...numbers);
+  finalPasswordArray = finalPasswordArray.concat(numbers);
 
 
 }
 
 if (isSymbol){
-    finalPasswordArray.push(...symbols);
+  finalPasswordArray = finalPasswordArray.concat(symbols);
 
 
 }
 
-for (var i = 0; i <passwordLength; i++) {
-  finalPasswordArray [Math.floor(Math.random() * finalPasswordArray.length)];
+console.log(finalPasswordArray);
+
+//Creates an empty string and then fills from selected character arrays
+var randomPassword = ""
+
+for (var i = 0; i < passwordLength; i++) {
+  randomPassword = randomPassword +
+  finalPasswordArray[Math.floor(Math.random() * finalPasswordArray.length)];
+  console.log(randomPassword)
+}
+return randomPassword;
+
 }
 
 
-
-
-
-
-console.log(finalPasswordArray)
-
-//for loop to select random characters in the amount of pwlength
-for (var i = 0; i <= passwordLength; i++) {
-  var randomNumber = Math.floor(Math.random() * passwordLength);
-  password += passwordLength.substring(randomNumber, randomNumber +1);
-}
-
-print.finalPasswordArray;
-
-//return the final password
-document.getElementById("password").value = password;
-}
+//Write password into #password element
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   
-  passwordText.value = password;
   
+  passwordText.value = password;
 }
-generateBtn.addEventListener("click", writePassword);
 
-// var passwordText = document.querySelector("#password");
 
-// var password = generatePassword();
-
-// passwordText.value = password;
 
 // Update after grading. Add checkboxes - Change stylesheet - Revert HTML to match events
 
@@ -280,3 +275,5 @@ generateBtn.addEventListener("click", writePassword);
 //   const symbols = '!@#$%^&*()_+-=?/.,{}[]';
 //   return symbols[Math.floor(Math.random() * symbols.length)];
 // }
+
+
